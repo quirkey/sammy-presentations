@@ -121,24 +121,34 @@ ul {
   
   <style type="text/css" media="screen">
   pre {
-    font-family: Inconsolata;
-    font-size: 0.5em;
-  }
-  
-  p {
-    margin: 10px 0px;
-  }
-  
-  p em {
-    color: #879AB0;
-  }
+  font-family: Inconsolata;
+  font-size: 0.5em;
+}
+
+p {
+  margin: 10px 0px;
+}
+
+p em {
+  color: #879AB0;
+}
+
+h1, h2 {
+  margin-bottom: 10px;
+}
+
+.bigcode pre {
+  font-size: 1em;
+}
+
   </style>
   
   <style type="text/css" media="screen">
   .highlight {
-	line-height: 80%;
+	line-height: 100%;
 	border-top: 1px solid #CCC;
 	border-bottom: 1px solid #CCC;
+	padding: 10px 0px;
 }
 .highlight br {
   height: 0px;
@@ -4913,8 +4923,7 @@ jQuery.extend( jQuery.easing,
       
       <div class="">
         <div id="slide-0" class="content">
-<h1>Sammy.js</h1>
-<p><em>nyc.js / june 3 / 2009</em></p>
+<h1>Sammy.js</h1><p><em>nyc.js / june 3, 2009</em></p>
         </div>
       </div>
       
@@ -4926,25 +4935,19 @@ jQuery.extend( jQuery.easing,
       
       <div class="">
         <div id="slide-2" class="content">
-<p>
-      <img src="images/sammy2.jpg" alt="Sammy"/>
-    </p><h2>Classy.</h2>
+<p><img src="images/sammy2.jpg" alt="Sammy"></p><h2>Classy.</h2>
         </div>
       </div>
       
       <div class="">
         <div id="slide-3" class="content">
-<p>
-      <img src="images/sinatra.jpg" alt="Sinatra"/>
-    </p><h2>Kind of like this guy . . .</h2>
+<p><img src="images/sinatra.jpg" alt="Sinatra"></p><h2>Kind of like this guy . . .</h2>
         </div>
       </div>
       
       <div class="">
         <div id="slide-4" class="content">
-<p>
-      <img src="images/sammy1.jpg" alt="Sinatra"/>
-    </p><h2>Classier.</h2>
+<p><img src="images/sammy1.jpg" alt="Sinatra"></p><h2>Classier.</h2>
         </div>
       </div>
       
@@ -4956,9 +4959,9 @@ jQuery.extend( jQuery.easing,
       
       <div class="">
         <div id="slide-6" class="content">
-<blockquote>
-      <p>Sammy is a tiny JavaScript framework, built on top of jQuery, inspired by Ruby's Sinatra</p>
-    </blockquote>
+<blockquote><p>Sammy is a tiny JavaScript framework,<br>
+built on top of jQuery,<br>
+inspired by Ruby's Sinatra</p></blockquote>
         </div>
       </div>
       
@@ -4970,37 +4973,33 @@ jQuery.extend( jQuery.easing,
       
       <div class="">
         <div id="slide-8" class="content">
-<h1>Sinatra:</h1><div class="highlight ruby code highlight">
-      <pre><span class="n">app</span><span class="o">.</span><span class="n">rb</span>
-
+<h1>Sinatra:</h1><div class="highlight ruby code highlight"><pre><span class="c1"># app.rb</span>
 <span class="k">class</span> <span class="nc">MyApp</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Default</span>
 
   <span class="n">get</span> <span class="s1">'/user/:name'</span> <span class="k">do</span>
     <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find_by_name</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="s1">'name'</span><span class="o">]</span><span class="p">)</span>
     <span class="n">erb</span> <span class="ss">:user</span>
   <span class="k">end</span>
-  
+
   <span class="n">post</span> <span class="s1">'/user/'</span> <span class="k">do</span>
     <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="s1">'user'</span><span class="o">]</span><span class="p">)</span>
     <span class="n">redirect</span> <span class="s2">"/user/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
   <span class="k">end</span>
 
 <span class="k">end</span>
-</pre>
-    </div>
+</pre></div>
         </div>
       </div>
       
       <div class="">
         <div id="slide-9" class="content">
-<h1>Sammy</h1><div class="highlight javascript code highlight">
-      <pre><span class="c">// app.js</span>
+<h1>Sammy</h1><div class="highlight javascript code highlight"><pre><span class="c">// app.js</span>
 <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">sammy</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="kd">with</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
 
   <span class="nx">get</span><span class="p">(</span><span class="s1">'#/user/:name'</span><span class="o">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="kd">with</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">User</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="o">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">partial</span><span class="p">(</span><span class="s1">'user.html.erb'</span><span class="o">,</span> <span class="p">{</span><span class="nx">user</span><span class="o">:</span> <span class="nx">user</span><span class="p">});</span>
-      <span class="p">});</span>
+    <span class="nx">User</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="o">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">partial</span><span class="p">(</span><span class="s1">'user.html.erb'</span><span class="o">,</span> <span class="p">{</span><span class="nx">user</span><span class="o">:</span> <span class="nx">user</span><span class="p">});</span>
+    <span class="p">});</span>
   <span class="p">}});</span>
 
   <span class="nx">post</span><span class="p">(</span><span class="s1">'#/user/'</span><span class="o">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="kd">with</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
@@ -5008,9 +5007,9 @@ jQuery.extend( jQuery.easing,
       <span class="nx">redirect</span><span class="p">(</span><span class="s1">'#/user/'</span> <span class="o">+</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">});</span>
   <span class="p">}});</span>
+
 <span class="p">}});</span>
-</pre>
-    </div>
+</pre></div>
         </div>
       </div>
       
@@ -5022,33 +5021,25 @@ jQuery.extend( jQuery.easing,
       
       <div class="">
         <div id="slide-11" class="content">
-<h1>1. Structure without the weight</h1><p>
-      <em>Like &lt;10K for real.</em>
-    </p>
+<h1>1. Structure without the weight</h1><p><em>Like &lt;10K for real.</em></p>
         </div>
       </div>
       
       <div class="">
         <div id="slide-12" class="content">
-<h1>2. Single Page Apps</h1><p>
-      <em>I know you be sweatin' gmail.</em>
-    </p>
+<h1>2. Single Page Apps</h1><p><em>I know you be sweatin' gmail.</em></p>
         </div>
       </div>
       
       <div class="">
         <div id="slide-13" class="content">
-<h1>3. Fully JavaScript applications with CouchDB/App</h1><p>
-      <em>Turtles all the way down (with a crunchy erlang center)</em>
-    </p>
+<h1>3. Fully JavaScript applications with CouchDB/App</h1><p><em>Turtles all the way down (with a crunchy erlang center)</em></p>
         </div>
       </div>
       
       <div class="">
         <div id="slide-14" class="content">
-<h1>4. Because it was fun</h1><p>
-      <em>I like Javascript</em>
-    </p>
+<h1>4. Because it was fun</h1><p><em>I like Javascript</em></p>
         </div>
       </div>
       
@@ -5066,15 +5057,153 @@ jQuery.extend( jQuery.easing,
       
       <div class="">
         <div id="slide-17" class="content">
-<h1>DEMO</h1><p>
-      <em>Please don't fuck this up . . .</em>
-    </p>
+<h1>Basics</h1>
         </div>
       </div>
       
       <div class="">
         <div id="slide-18" class="content">
-<h1>THANKS!</h1><h2>http://code.quirkey.com/sammy</h2><h3>Aaron Quint</h3><h3>Quirkey NYC, LLC</h3><h3>aaron@quirkey.com</h3><h3>twitter.com/aq</h3>
+<h1>Routes</h1>
+        </div>
+      </div>
+      
+      <div class=" bigcode">
+        <div id="slide-19" class="content">
+<div class="highlight javascript code highlight"><pre><span class="c">// routes</span>
+<span class="nx">get</span><span class="p">(</span><span class="s1">'#/'</span><span class="o">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c">//... do something ... });</span>
+</pre></div>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-20" class="content">
+<h2>Routes are events triggered on URL change.</h2>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-21" class="content">
+<h1>Events</h1>
+        </div>
+      </div>
+      
+      <div class=" bigcode">
+        <div id="slide-22" class="content">
+<div class="highlight javascript code highlight"><pre><span class="c">// events</span>
+<span class="nx">bind</span><span class="p">(</span><span class="s1">'custom-event'</span><span class="o">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c">//... do something ... });</span>
+</pre></div>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-23" class="content">
+<h2>Events are per-app, and only bound to the DOM after 'run()'</h2>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-24" class="content">
+<h1>Context</h1>
+        </div>
+      </div>
+      
+      <div class=" bigcode">
+        <div id="slide-25" class="content">
+<div class="highlight javascript code highlight"><pre><span class="nx">get</span><span class="p">(</span><span class="s1">'#/'</span><span class="o">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c">// this == EventContext</span>
+<span class="p">});</span>
+
+<span class="nx">bind</span><span class="p">(</span><span class="s1">'custom'</span><span class="o">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c">// this == EventContext</span>
+<span class="p">});</span>
+</pre></div>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-26" class="content">
+<h2>EventContext does all your renders and redirects.</h2>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-27" class="content">
+<h1>MORE!</h1>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-28" class="content">
+<div class="highlight javascript code highlight"><pre><span class="c">// helpers</span>
+<span class="nx">helpers</span><span class="p">({</span>
+  <span class="nx">autolink</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">text</span><span class="p">.</span><span class="nx">gsub</span><span class="p">(</span><span class="sr">/(http\:\/\/[^s]+)/</span><span class="o">,</span> <span class="s1">'&lt;a href="$1"&gt;$1&lt;/a&gt;'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c">// befores</span>
+<span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">loaded</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c">// load</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="c">// stops the execution of routes.</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-29" class="content">
+<h1>DEMO</h1><p><em>Please don't fuck this up . . .</em></p>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-30" class="content">
+<h1>v0.1.4</h1><p><em>seriously, it's early days</em></p>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-31" class="content">
+<h1>The Future!</h1>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-32" class="content">
+<h2>1. More simple abstractions/features.</h2>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-33" class="content">
+<h2>2. Getting rid of jQuery</h2>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-34" class="content">
+<h2>3. RESTful Database Abstractions</h2>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-35" class="content">
+<h2>4.</h2>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-36" class="content">
+<h2>5. SUCCESS!</h2>
+        </div>
+      </div>
+      
+      <div class="">
+        <div id="slide-37" class="content">
+<h1>THANKS!</h1><h2><a href="http://code.quirkey.com/sammy">http://code.quirkey.com/sammy</a></h2><h3>Aaron Quint</h3><h3>Quirkey NYC, LLC</h3><p>aaron@quirkey.com
+<a href="http://twitter.com/aq">twitter.com/aq</a></p>
         </div>
       </div>
       

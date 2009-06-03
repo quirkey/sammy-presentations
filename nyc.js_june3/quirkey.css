@@ -10,3 +10,11 @@ p {
 p em {
   color: #879AB0;
 }
+
+h1, h2 {
+  margin-bottom: 10px;
+}
+
+.bigcode pre {
+  font-size: 1em;
+}

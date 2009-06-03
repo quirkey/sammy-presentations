@@ -2,6 +2,7 @@
 
 # Sammy.js
 
+_nyc.js / june 3, 2009_
 !SLIDE
 
 # What is Sammy?
@@ -30,7 +31,9 @@
 
 !SLIDE
 
-> Sammy is a tiny JavaScript framework, built on top of jQuery, inspired by Ruby's Sinatra
+> Sammy is a tiny JavaScript framework,<br /> 
+built on top of jQuery,<br /> 
+inspired by Ruby's Sinatra
 
 !SLIDE
 
@@ -41,20 +44,21 @@
 # Sinatra:
 
 @@@ ruby
-# app.rb
-class MyApp < Sinatra::Default
-  
-  get '/user/:name' do
-    @user = User.find_by_name(params['name'])
-    erb :user
-  end
-  
-  post '/user/' do
-    @user = User.create(params['user'])
-    redirect "/user/#{user.name}"
-  end
-  
-end
+
+    # app.rb
+    class MyApp < Sinatra::Default
+
+      get '/user/:name' do
+        @user = User.find_by_name(params['name'])
+        erb :user
+      end
+
+      post '/user/' do
+        @user = User.create(params['user'])
+        redirect "/user/#{user.name}"
+      end
+
+    end
 @@@
 
 !SLIDE
@@ -62,22 +66,23 @@ end
 # Sammy
 
 @@@ javascript
-// app.js
-var app = $.sammy(function() { with(this) {
 
-  get('#/user/:name', function() { with(this) {
-    User.get(params['name'], function() {
-      partial('user.html.erb', {user: user});
-    });
-  }});
-  
-  post('#/user/', function() { with(this) {
-    User.create(params['user'], function(user) {
-      redirect('#/user/' + user.name);
-    });
-  }});
-  
-}});
+    // app.js
+    var app = $.sammy(function() { with(this) {
+
+      get('#/user/:name', function() { with(this) {
+        User.get(params['name'], function() {
+          partial('user.html.erb', {user: user});
+        });
+      }});
+
+      post('#/user/', function() { with(this) {
+        User.create(params['user'], function(user) {
+          redirect('#/user/' + user.name);
+        });
+      }});
+
+    }});
 @@@
 
 !SLIDE
@@ -118,17 +123,129 @@ _I like Javascript_
 
 !SLIDE
 
+# Basics
+
+!SLIDE
+
+# Routes
+
+!SLIDE bigcode
+
+@@@ javascript
+    // routes
+    get('#/', function() { //... do something ... });
+    
+@@@
+
+!SLIDE
+
+## Routes are events triggered on URL change.
+
+!SLIDE
+
+# Events
+
+!SLIDE bigcode
+
+@@@ javascript
+    // events
+    bind('custom-event', function() { //... do something ... });
+    
+@@@
+
+!SLIDE
+
+## Events are per-app, and only bound to the DOM after 'run()'
+
+!SLIDE
+
+# Context
+
+
+!SLIDE bigcode
+
+@@@ javascript
+
+    get('#/', function() {
+      // this == EventContext
+    });
+    
+    bind('custom', function() {
+      // this == EventContext
+    });
+    
+@@@
+
+!SLIDE
+
+## EventContext does all your renders and redirects.
+
+!SLIDE
+
+# MORE!
+
+!SLIDE
+
+@@@ javascript
+  
+    // helpers
+    helpers({
+      autolink: function(text) {
+        return text.gsub(/(http\:\/\/[^s]+)/, '<a href="$1">$1</a>');
+      }
+    });
+  
+    // befores
+    before(function() {
+      if (!loaded) {
+        // load
+        return false; // stops the execution of routes.
+      }
+    });
+
+@@@
+!SLIDE
+
 # DEMO 
 
 _Please don't fuck this up . . ._
 
 !SLIDE
 
+# v0.1.4
+_seriously, it's early days_
+
+!SLIDE
+
+# The Future!
+
+!SLIDE
+
+## 1. More simple abstractions/features.
+
+!SLIDE
+
+## 2. Getting rid of jQuery
+
+!SLIDE
+
+## 3. RESTful Database Abstractions
+
+!SLIDE
+
+## 4. 
+
+!SLIDE
+
+## 5. SUCCESS! 
+
+!SLIDE
+
 # THANKS!
 
-## http://code.quirkey.com/sammy
+## [http://code.quirkey.com/sammy](http://code.quirkey.com/sammy)
 
 ### Aaron Quint
 ### Quirkey NYC, LLC
-### aaron@quirkey.com
-### twitter.com/aq
+aaron@quirkey.com
+[twitter.com/aq](http://twitter.com/aq)
