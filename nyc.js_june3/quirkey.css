@@ -1,0 +1,12 @@
+pre {
+  font-family: Inconsolata;
+  font-size: 0.5em;
+}
+
+p {
+  margin: 10px 0px;
+}
+
+p em {
+  color: #879AB0;
+}
